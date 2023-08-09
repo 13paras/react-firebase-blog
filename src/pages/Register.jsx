@@ -30,7 +30,7 @@ const Register = () => {
     password: "",
     image: "",
   });
-  const { setAuthenticated } = useAuthStatus();
+  // const { setAuthenticated } = useAuthStatus();
   const [progressState, setProgressState] = useState();
   const { name, email, password, image } = formData;
   const [loading, setLoading] = useState(false);
@@ -92,6 +92,7 @@ const Register = () => {
   // Create and Submit user to firebase
   const submitHandler = async (e) => {
     e.preventDefault();
+
     try {
       setLoading(true);
       const userCredentials = await createUserWithEmailAndPassword(
@@ -101,7 +102,6 @@ const Register = () => {
       );
       updateProfile(auth.currentUser, {
         displayName: name,
-        photoURL: await storeImage(),
       });
       const user = userCredentials.user;
 
@@ -114,12 +114,10 @@ const Register = () => {
         timestamp: serverTimestamp(),
       });
       navigate("/");
-      setLoading(false);
       toast.success("User registered successfully, Welcome!!");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
-      setAuthenticated(false);
     } finally {
       setLoading(false);
     }

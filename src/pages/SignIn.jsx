@@ -7,13 +7,13 @@ import { toast } from "react-hot-toast";
 import Loader from "../components/Loader";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const { email, password } = formData;
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     setFormData({
@@ -21,27 +21,30 @@ const SignIn = () => {
       [e.target.id]: e.target.value,
     });
   };
+
   const submitDetails = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
     try {
+      setLoading(true);
       const auth = getAuth();
       const userCredentials = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
-      const user = userCredentials.user;
-      if (user) {
+      if (userCredentials?.user) {
         navigate("/");
-        setLoading(false);
-        toast.success("Welcome Back!!");
+        toast.success("Welcome Back, have a great day");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Unable to Sign in. Please check your credentials!");
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
   if (loading) {
     return <Loader />;
   }

@@ -44,7 +44,6 @@ const CommentSection = () => {
         // Add the comments to a new field "comments" in the existing blog data
         if (!blogData.comments) {
           await setDoc(blogRef, { ...blogData, comments: [commentData] });
-          console.log("Inside creatting comments field");
         } else {
           await updateDoc(blogRef, {
             comments: [...blogData.comments, commentData],
@@ -62,7 +61,7 @@ const CommentSection = () => {
         Swal.fire("You need to be logged in to post a comment.");
       }
       console.log(error);
-      toast.error("Unable to post comment");
+      // toast.error("Unable to post comment");
     } finally {
       setLoading(false);
     }
