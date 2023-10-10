@@ -6,12 +6,12 @@ This app is built with React + Vite, TailwindCSS, and Firebase. It uses Firebase
 
 ## Features
 
--Log in and log out using Firebase Authentication
--Create, view, edit, and delete blog posts using Firestore and Storage
--Users can also add cover image
--comment on profiles
--
--Protect routes based on the user’s authentication status
+- Log in and log out using Firebase Authentication
+- Create, view, edit, and delete blog posts using Firestore and Storage
+- Users can also add cover image
+- comment on posts
+- Responsive design that adapts to different screen sizes
+- Protect routes based on the user’s authentication status
 
 * ## Getting started
   To run this app locally, you need to have Node.js and npm installed on your machine. You also need to create a Firebase project and enable the services mentioned above. Then follow these steps:
