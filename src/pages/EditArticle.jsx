@@ -80,7 +80,7 @@ const EditArticle = () => {
       }
     } catch (error) {
       navigate("/");
-      console.log(error);
+      console.log(error.message);
       toast.error("Listing doesnot exist");
     } finally {
       setLoading(false);
