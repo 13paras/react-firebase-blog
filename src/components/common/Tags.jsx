@@ -27,7 +27,7 @@ const Tags = () => {
         <Link to={"/category/lifestyle"}>lifestyle</Link>{" "}
       </li>
       <li className={`${styles.categoryBtn}`}>
-        <Link to={"/category/desgin"}>desing</Link>{" "}
+        <Link to={"/category/design"}>design</Link>{" "}
       </li>
       <li className={`${styles.categoryBtn}`}>
         <Link to={"/category/travel"}>travel</Link>{" "}

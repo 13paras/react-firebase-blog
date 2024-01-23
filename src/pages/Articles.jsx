@@ -47,7 +47,6 @@ const Articles = () => {
       }
     };
     fetchBlogs();
-    console.log(blogsData?.length);
   }, []);
 
   const fetchMoreBlogs = async () => {
