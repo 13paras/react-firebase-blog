@@ -54,14 +54,14 @@ const EditArticle = () => {
         [e.target.id]: e.target.value,
       });
     }
-    console.log(blogData);
-    /*     if(e.target.files){
+    // Function to be created in future to update images
+    /* if (e.target.files) {
       setBlogData({
         ...blogData,
-        image: e.target.files,
+        image: e.target.files[0],
       });
     } */
-    // console.log(blogData);
+    
   };
 
   const fetchInitialData = async () => {
@@ -103,7 +103,8 @@ const EditArticle = () => {
         };
 
         const blogRef = doc(db, "blogs", articleId);
-
+        console.log("Inside try catch")
+        console.log("blogData and BlogDataCopy: ",blogData, blogDataCopy)
         // updating the blogData which is inside blogData field
         await updateDoc(blogRef, {
           blogData: blogDataCopy,
@@ -153,13 +154,14 @@ const EditArticle = () => {
           id='title'
           placeholder='Enter title here...'
         />
-        <input
+        {/* Uncomment this only when upload image function is created from above functions */}
+        {/* <input
           onChange={onChangeHandler}
           type='file'
           className='mt-5 w-full rounded-md border border-zinc-800 py-3 pl-3 text-zinc-700'
           name=''
           placeholder='Enter title here...'
-        />
+        /> */}
         <BlogEditor blogData={blogData} setBlogData={setBlogData} />
         <div className='mx-auto my-8 mt-20 w-full max-w-[50%] md:mt-0 lg:max-w-[40%] '>
           <button
