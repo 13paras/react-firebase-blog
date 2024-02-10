@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Search = () => {
+  const [searchedQuery, setSearchedQuery] = useState("");
   return (
-    <form className='mx-auto flex max-w-[90%] items-center sm:max-w-[50%]'>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className='mx-auto flex max-w-[90%] items-center sm:max-w-[50%]'
+    >
       <label htmlFor='simple-search' className='sr-only'>
         Search
       </label>
@@ -23,6 +28,7 @@ const Search = () => {
           </svg>
         </div>
         <input
+          onChange={(e) => setSearchedQuery(e.target.value)}
           type='text'
           id='simple-search'
           className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 py-2 pl-10 text-sm text-gray-900 shadow-xl focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:py-3'
@@ -30,11 +36,8 @@ const Search = () => {
           required
         />
       </div>
-      <button
-        type='submit'
-        className='ml-2 rounded-lg border border-blue-700 bg-blue-700 px-3 py-2 text-xs text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:px-6 sm:py-3 sm:text-sm sm:font-medium'
-      >
-        Search
+      <button className='ml-2 rounded-lg border border-blue-700 bg-blue-700 px-3 py-2 text-xs text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:px-6 sm:py-3 sm:text-sm sm:font-medium'>
+        <Link to={`/search/${searchedQuery.trim().toLowerCase()}`}>Search</Link>
       </button>
     </form>
   );

@@ -13,6 +13,7 @@ import WriteBlog from "./pages/WriteBlog";
 import SingleArticle from "./pages/SingleArticle";
 import Category from "./pages/Category";
 import EditArticle from "./pages/EditArticle";
+import SearchResults from "./pages/SearchResults";
 
 const App = () => {
   /* 
@@ -39,6 +40,7 @@ const App = () => {
             path={`/category/:categoryName/:articleId`}
             element={<SingleArticle />}
           />
+          <Route path="/search/:query" element={<SearchResults />} />
           <Route path={`/edit/:articleId`} element={<EditArticle />} />
           <Route path='/sign-up' element={<Register />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
